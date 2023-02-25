@@ -1,0 +1,21 @@
+<div class="box-login">
+    <div class="box-item">
+      <mat-form-field class="input" appearance="fill"  floatLabel="always">
+          <mat-label>User name</mat-label>
+          <input matInput>
+      </mat-form-field>
+    </div>
+    <div class="box-item">
+      <mat-form-field class="input" appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+    </div>
+    <div class="box-item centered">
+        <button mat-raised-button color="primary">Login</button>
+    </div>
+    <p class="centered">¿Are you don't have user? <a href="#">Signup</a></p>
+</div>
