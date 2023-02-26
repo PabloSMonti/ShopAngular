@@ -1,21 +1,39 @@
-<div class="box-login">
-    <div class="box-item">
-      <mat-form-field class="input" appearance="fill"  floatLabel="always">
-          <mat-label>User name</mat-label>
-          <input matInput>
-      </mat-form-field>
-    </div>
-    <div class="box-item">
-      <mat-form-field class="input" appearance="fill">
-          <mat-label>Enter your password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Username" formControlName="username">
         </mat-form-field>
-    </div>
-    <div class="box-item centered">
-        <button mat-raised-button color="primary">Login</button>
-    </div>
-    <p class="centered">¿Are you don't have user? <a href="#">Signup</a></p>
-</div>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input type="password" required matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+      </p>
+
+      <p *ngIf="error" class="error">
+        {{ error }}
+      </p>
+
+      <div class="button">
+        <button type="submit" mat-button>Login</button>
+      </div>
+
+
+  <label class="alert" *ngIf="username?.errors?.['required'] || password?.errors?.['required']">
+    ¡El campo es requerido!
+  </label>
+  <label class="alert" *ngIf="username?.errors?.['minlength']">
+    ¡El usuario debe tener un minimo de {{usrMinLength}} caracteres!
+  </label>
+  <label class="alert" *ngIf="password?.errors?.['minlength']">
+    ¡El password debe tener un minimo de {{pwsMinLength}} caracteres!
+  </label>
+
+
+    </form>
+  </mat-card-content>
+</mat-card>
