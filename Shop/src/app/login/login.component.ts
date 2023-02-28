@@ -1,5 +1,7 @@
 import { Input, Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoginService } from './services/login.service';
+import { UserCredential } from './templates/UserCredentials';
 
 @Component({
   selector: 'app-login',
@@ -10,31 +12,38 @@ export class LoginComponent {
   
   hide = true;
 
-  public usrMinLength : number = 5;
-  public pwsMinLength : number = 8;
+  public usrMinLength : number = 4;
+  public pwsMinLength : number = 7;
 
   form: FormGroup = new FormGroup({
     username: new FormControl('',[Validators.required,Validators.minLength(this.usrMinLength)]),
-    password: new FormControl('',[Validators.required,Validators.minLength(this.pwsMinLength)]),
+    password: new FormControl('',[Validators.required,Validators.minLength(this.pwsMinLength)])
   });
 
-  constructor() { }
+  constructor(private loginSvc : LoginService) { }
 
   ngOnInit(): void {
   }
 
-  submit() {
+  login()
+  {
 
     if (this.form.valid) {
-      this.submitLoginEM.emit(this.form.value);
+
+      let uc = new UserCredential();
+      uc.password = this.form.value.password;
+      uc.userName = this.form.value.username;
+
+      //console.log(uc.userName);
+      //console.log( uc.password);
+      
+
+      this.loginSvc.validateLogin(uc);
     }
 
   }
 
   @Input() error!: string;
-
-  @Output() submitLoginEM = new EventEmitter();
-
 
   get username() { return this.form.get('username'); }
 
