@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpStatusCode } from '@angular/common/http';
-import {Observable, of} from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import { ApiPaths, environment } from 'environment';
 import { UserCredential } from '../templates/UserCredentials';
 import { CookieService } from 'ngx-cookie-service';
@@ -16,6 +16,7 @@ export class LoginService {
   validateLogin(credentials:UserCredential):Observable<boolean> {
 
     let token  = new TokenResponse();
+    var response = new Subject<boolean>();
 
     this.http.post<ITokenResponse>(environment.baseUrl+ApiPaths.getToken,credentials)
     .subscribe((res: ITokenResponse) => {
@@ -25,14 +26,14 @@ export class LoginService {
       if(token.statusCode != undefined && token.statusCode ==  HttpStatusCode.Ok){
 
         this.cookieSvc.set("token",token.token);
-        return true;
+        response.next(true);
       }
-      else
-        return false;
+
+      response.next(false);
     
     });
 
-    return of(false);
+    return response.asObservable();
 
   }
 }

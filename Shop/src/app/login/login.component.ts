@@ -1,5 +1,6 @@
 import { Input, Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from './services/login.service';
 import { UserCredential } from './templates/UserCredentials';
 
@@ -20,7 +21,7 @@ export class LoginComponent {
     password: new FormControl('',[Validators.required,Validators.minLength(this.pwsMinLength)])
   });
 
-  constructor(private loginSvc : LoginService) { }
+  constructor(private loginSvc : LoginService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -33,13 +34,19 @@ export class LoginComponent {
       let uc = new UserCredential();
       uc.password = this.form.value.password;
       uc.userName = this.form.value.username;
-
-      //console.log(uc.userName);
-      //console.log( uc.password);
       
+      this.loginSvc.validateLogin(uc).subscribe((loginOk : boolean)=>{
 
-      this.loginSvc.validateLogin(uc);
+        if(loginOk){
+
+          this.router.navigate(['/home']);
+
+        }
+
+      });
     }
+    else
+      this.error = "Datos invalidos";
 
   }
 
