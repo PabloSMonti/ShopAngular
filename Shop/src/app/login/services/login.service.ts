@@ -24,8 +24,7 @@ export class LoginService {
       
       if(token.statusCode != undefined && token.statusCode ==  HttpStatusCode.Ok){
 
-        //this.cookieSvc.set("token",token);
-        console.log("siii");
+        this.cookieSvc.set("token",token.token);
         return true;
       }
       else
