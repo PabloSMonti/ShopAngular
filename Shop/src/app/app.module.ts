@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from './login/services/login.service';
 import { HomeComponent } from './home/home/home.component';
+import { LoginGuardia } from './login/loginGuardia';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { HomeComponent } from './home/home/home.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [CookieService,LoginService],
+  providers: [CookieService,LoginService,LoginGuardia],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

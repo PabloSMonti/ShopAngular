@@ -35,15 +35,18 @@ export class LoginComponent {
       uc.password = this.form.value.password;
       uc.userName = this.form.value.username;
       
-      this.loginSvc.validateLogin(uc).subscribe((loginOk : boolean)=>{
+      this.loginSvc.validateLogin(uc).subscribe(e=>{
 
-        if(loginOk){
+        if(this.loginSvc.isLogged()){
 
           this.router.navigate(['/home']);
-
+  
         }
 
       });
+      
+
+
     }
     else
       this.error = "Datos invalidos";
