@@ -12,5 +12,5 @@ export enum ApiPaths {
 export enum MenuPaths{
   login='',
   home='/home',
-  purchase='/purchases'
+  purchase='/purchase'
 }

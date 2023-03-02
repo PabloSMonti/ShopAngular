@@ -12,12 +12,15 @@ import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from './login/services/login.service';
 import { HomeComponent } from './home/home/home.component';
 import { LoginGuardia } from './login/loginGuardia';
+import { PurchaseComponent } from './purchase/purchase/purchase.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    PurchaseComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { MenuPaths } from 'environment';
-import { LoginService } from 'src/app/login/services/login.service';
+
 
 
 
@@ -12,15 +10,7 @@ import { LoginService } from 'src/app/login/services/login.service';
 })
 export class HomeComponent {
 
-  constructor(private router:Router,private loginSrv:LoginService){}
 
-  menues = MenuPaths;
 
-  logout():void{
-      this.loginSrv.logout();
-  }
 
-  goToMenu(menu:string):void{
-    this.router.navigate([menu]);
-  }
 }
