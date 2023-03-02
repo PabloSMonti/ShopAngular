@@ -7,3 +7,10 @@ export const environment = {
 export enum ApiPaths {
     getToken = "token/",
  }
+
+
+export enum MenuPaths{
+  login='',
+  home='/home',
+  purchase='/purchases'
+}

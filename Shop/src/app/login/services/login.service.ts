@@ -42,6 +42,10 @@ export class LoginService {
   isLogged():boolean{
     return this.cookieSvc.check("token");
   }
+
+  logout():void{
+    this.cookieSvc.delete('token');
+  }
 }
 
 
