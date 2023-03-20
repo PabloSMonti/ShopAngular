@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { LoginGuardia } from './login/loginGuardia';
-import { PurchaseComponent } from './purchase/purchase/purchase.component';
+import { PurchasesComponent } from './purchase/purchase/purchases.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent },
   {path:'home', component:HomeComponent,canActivate: [LoginGuardia] },
-  {path:'purchase', component:PurchaseComponent,canActivate: [LoginGuardia] },
+  {path:'purchases', component:PurchasesComponent,canActivate: [LoginGuardia] },
 ];
 
 @NgModule({

@@ -14,7 +14,7 @@ export class LoginGuardia implements CanActivate{
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         
-/*         if(!this.loginSvc.isLogged())
+       /*  if(!this.loginSvc.isLogged())
             this.router.navigate(['']);
 
         return this.loginSvc.isLogged(); */
