@@ -12,18 +12,6 @@ import { MenuPaths } from 'environment';
 })
 export class HomeComponent {
 
-  constructor(private router:Router,private loginSrv:LoginService){}
-
-  menues = MenuPaths;
-  title = 'Shop';
-
-  logout():void{
-    this.loginSrv.logout();
-}
-
-goToMenu(menu:string):void{
-  this.router.navigate([menu]).then(()=> window.location.reload());
-}
 
 
 }

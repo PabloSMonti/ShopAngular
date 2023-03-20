@@ -1,1 +1,38 @@
-<router-outlet></router-outlet>
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"  (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Shop</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>shopping_cart_checkout</mat-icon>
+  </button>
+   <button mat-icon-button class="material-symbols-outlined" aria-label="Example icon-button with share icon" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button> 
+</mat-toolbar>
+<mat-drawer-container class="example-container">
+  <mat-drawer class="drawer" #drawer mode="side" >
+    <mat-nav-list>
+      <mat-list-item (click)="goToMenu(menues.home)">
+        <mat-icon class="icon" >publish</mat-icon>
+        <span>Sell something</span>
+      </mat-list-item>
+      <mat-list-item class="icon" (click)="goToMenu(menues.purchase)">
+        <mat-icon class="icon" >shopping_bag</mat-icon>
+        <span >My purchases</span>
+      </mat-list-item>
+      <mat-list-item class="icon" (click)="goToMenu(menues.home)">
+        <mat-icon class="icon" >settings</mat-icon>
+        <span >My account</span>
+      </mat-list-item>
+     </mat-nav-list>
+
+
+  </mat-drawer>
+  <mat-drawer-content>
+
+    <router-outlet></router-outlet>
+
+  </mat-drawer-content>
+</mat-drawer-container>
