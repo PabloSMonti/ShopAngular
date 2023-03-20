@@ -46,6 +46,10 @@ export class LoginService {
   logout():void{
     this.cookieSvc.delete('token');
   }
+
+  getTokenValue():string{
+    return this.cookieSvc.get('token');
+  }
 }
 
 

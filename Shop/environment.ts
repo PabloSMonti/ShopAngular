@@ -6,6 +6,7 @@ export const environment = {
 
 export enum ApiPaths {
     getToken = "token/",
+    getPurchases = "purchases/"
  }
 
 

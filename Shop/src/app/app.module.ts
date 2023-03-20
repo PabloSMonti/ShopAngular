@@ -12,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from './login/services/login.service';
 import { HomeComponent } from './home/home/home.component';
 import { LoginGuardia } from './login/loginGuardia';
-import { PurchasesComponent } from './purchase/purchase/purchases.component';
+import { PurchasesComponent } from './purchase/purchases/purchases.component';
 
 
 @NgModule({
